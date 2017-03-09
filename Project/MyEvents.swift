@@ -2,42 +2,54 @@
 //  MyEvents.swift
 //  Project
 //
-//  Created by admin on 01/01/2017.
+//  Created by Noa Fialkov on 21/01/2017.
 //  Copyright © 2017 admin. All rights reserved.
 //
 
 import Foundation
-import UIKit
+import FirebaseDatabase
+
 class MyEvents{
-    //var lastUpdate:Date?
-    var title: String?
-    var noats: String?
-    var time: String?
-    var image: UIImage?
     
-    init(_ title: String,_ noats: String,_ time: String,_ image: UIImage) {
+    var title: String
+    var notes: String?
+    var time: String
+    var location: String?
+    var imageUrl: String?
+    var lastUpdate: Date?
+    
+    
+    init(_ title: String,_ notes: String,_ location: String, _ time: String ,_ imageUrl: String? = nil) {
         self.title=title
-        self.noats=noats
+        self.notes=notes
         self.time=time
-        self.image=image
+        self.location=location
+        self.imageUrl=imageUrl
     }
 
+    init(json:Dictionary<String,Any>){
+        title = json["title"] as! String
+        time  = json["time"] as! String
+        notes = json["notes"] as? String
+        location = json ["location"] as? String
+        if let im = json["imageUrl"] as? String{
+            imageUrl = im
+        }
+        if let ts = json["lastUpdate"] as? Double{
+            self.lastUpdate = Date.fromFirebase(ts)
+        }
+    }
     
-    
-    ///DB
-//    init(json:Dictionary<String,Any>){
-//        title = json["title"]!
-//        noats = json["noats"]!
-//        time = json["time"]!
-//        image = json[image]!
-//    }
-//    
-//    func toFirebase() -> Dictionary<String,Any> {
-//        var json = Dictionary<String,Any>()
-//        json["title"] = title
-//      json["noats"] = noats
-//       json["time"] = time
-//    //////////json["lastUpdate"] = FIRServerValue..timestamp()
-//        return json
-//    }
+    func toFirebase() -> Dictionary<String,Any> {
+        var json = Dictionary<String,Any>()
+        json["title"] = title
+        json["time"] = time
+        json["location"] = location
+        json["notes"] = notes
+        if (imageUrl != nil){
+            json["imageUrl"] = imageUrl!
+        }
+        json["lastUpdate"] = FIRServerValue.timestamp()
+        return json
+    }
 }

@@ -20,13 +20,18 @@
 		84309B611E103DCB001C172A /* ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309B601E103DCB001C172A /* ProjectUITests.swift */; };
 		843738811E19352100394ADD /* MyEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843738801E19352100394ADD /* MyEventsTableViewController.swift */; };
 		843738831E193B8200394ADD /* MyEventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843738821E193B8200394ADD /* MyEventsTableViewCell.swift */; };
-		843738861E1946E600394ADD /* MyEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843738851E1946E600394ADD /* MyEvents.swift */; };
+		843738861E1946E600394ADD /* ModelFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843738851E1946E600394ADD /* ModelFirebase.swift */; };
 		843738881E19829700394ADD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843738871E19829700394ADD /* Model.swift */; };
 		8470DCE51E2AA80C0027BB03 /* NavigateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8470DCE41E2AA80C0027BB03 /* NavigateViewController.swift */; };
 		8470DCE71E2AA8890027BB03 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8470DCE61E2AA8890027BB03 /* LocationSearchTable.swift */; };
 		84868AE81E14054F00D497DB /* AddEvantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84868AE71E14054F00D497DB /* AddEvantViewController.swift */; };
 		8D2EA4C6936EBDD2EBD74376 /* Pods_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A90072B2E68107A49447C3A1 /* Pods_ProjectUITests.framework */; };
 		D809612B58DB23E5133C9267 /* Pods_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFF6FC46B8775DDE9314797A /* Pods_Project.framework */; };
+		F0674F7C1E3368C800196BBA /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F0674F7B1E3368C800196BBA /* libsqlite3.0.tbd */; };
+		F0674F831E336BD000196BBA /* ModelSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0674F821E336BD000196BBA /* ModelSql.swift */; };
+		F0674F891E3389A000196BBA /* MyEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0674F881E3389A000196BBA /* MyEvents.swift */; };
+		F0674F8B1E338E9900196BBA /* MyEvents+sql.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0674F8A1E338E9900196BBA /* MyEvents+sql.swift */; };
+		F0674F8D1E339C0800196BBA /* LastUpdateTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0674F8C1E339C0800196BBA /* LastUpdateTable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +75,7 @@
 		84309B621E103DCB001C172A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		843738801E19352100394ADD /* MyEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsTableViewController.swift; sourceTree = "<group>"; };
 		843738821E193B8200394ADD /* MyEventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsTableViewCell.swift; sourceTree = "<group>"; };
-		843738851E1946E600394ADD /* MyEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEvents.swift; sourceTree = "<group>"; };
+		843738851E1946E600394ADD /* ModelFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelFirebase.swift; sourceTree = "<group>"; };
 		843738871E19829700394ADD /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		8470DCE41E2AA80C0027BB03 /* NavigateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigateViewController.swift; sourceTree = "<group>"; };
 		8470DCE61E2AA8890027BB03 /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
@@ -79,6 +84,12 @@
 		CFF6FC46B8775DDE9314797A /* Pods_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AEF4D9ECCF9C1F181F1BDF /* Pods-ProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectUITests/Pods-ProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E2A4BF9EC37223F198DBE5A2 /* Pods-Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project/Pods-Project.release.xcconfig"; sourceTree = "<group>"; };
+		F0674F7B1E3368C800196BBA /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		F0674F821E336BD000196BBA /* ModelSql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelSql.swift; sourceTree = "<group>"; };
+		F0674F841E336E0D00196BBA /* Project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Project-Bridging-Header.h"; sourceTree = "<group>"; };
+		F0674F881E3389A000196BBA /* MyEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEvents.swift; sourceTree = "<group>"; };
+		F0674F8A1E338E9900196BBA /* MyEvents+sql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MyEvents+sql.swift"; sourceTree = "<group>"; };
+		F0674F8C1E339C0800196BBA /* LastUpdateTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastUpdateTable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0674F7C1E3368C800196BBA /* libsqlite3.0.tbd in Frameworks */,
 				D809612B58DB23E5133C9267 /* Pods_Project.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,6 +124,7 @@
 		1E69FF2BD24436D1423CDF21 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F0674F7B1E3368C800196BBA /* libsqlite3.0.tbd */,
 				CFF6FC46B8775DDE9314797A /* Pods_Project.framework */,
 				8284FE19F17DB4B0D59407D9 /* Pods_ProjectTests.framework */,
 				A90072B2E68107A49447C3A1 /* Pods_ProjectUITests.framework */,
@@ -160,6 +173,7 @@
 				841C1B621E1436BF005D288B /* EvantDetailsViewController.swift */,
 				8470DCE41E2AA80C0027BB03 /* NavigateViewController.swift */,
 				8470DCE61E2AA8890027BB03 /* LocationSearchTable.swift */,
+				F0674F841E336E0D00196BBA /* Project-Bridging-Header.h */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -185,8 +199,12 @@
 		843738841E1946D100394ADD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				843738851E1946E600394ADD /* MyEvents.swift */,
+				843738851E1946E600394ADD /* ModelFirebase.swift */,
 				843738871E19829700394ADD /* Model.swift */,
+				F0674F821E336BD000196BBA /* ModelSql.swift */,
+				F0674F881E3389A000196BBA /* MyEvents.swift */,
+				F0674F8A1E338E9900196BBA /* MyEvents+sql.swift */,
+				F0674F8C1E339C0800196BBA /* LastUpdateTable.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -287,6 +305,7 @@
 				TargetAttributes = {
 					84309B391E103DCB001C172A = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					84309B501E103DCB001C172A = {
@@ -477,16 +496,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0674F891E3389A000196BBA /* MyEvents.swift in Sources */,
+				F0674F8B1E338E9900196BBA /* MyEvents+sql.swift in Sources */,
 				843738881E19829700394ADD /* Model.swift in Sources */,
 				84309B401E103DCB001C172A /* ViewController.swift in Sources */,
+				F0674F8D1E339C0800196BBA /* LastUpdateTable.swift in Sources */,
 				84868AE81E14054F00D497DB /* AddEvantViewController.swift in Sources */,
 				843738831E193B8200394ADD /* MyEventsTableViewCell.swift in Sources */,
 				841C1B631E1436BF005D288B /* EvantDetailsViewController.swift in Sources */,
 				8470DCE71E2AA8890027BB03 /* LocationSearchTable.swift in Sources */,
 				8470DCE51E2AA80C0027BB03 /* NavigateViewController.swift in Sources */,
-				843738861E1946E600394ADD /* MyEvents.swift in Sources */,
+				843738861E1946E600394ADD /* ModelFirebase.swift in Sources */,
 				84309B461E103DCB001C172A /* Project.xcdatamodeld in Sources */,
 				84309B3E1E103DCB001C172A /* AppDelegate.swift in Sources */,
+				F0674F831E336BD000196BBA /* ModelSql.swift in Sources */,
 				843738811E19352100394ADD /* MyEventsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,10 +663,13 @@
 			baseConfigurationReference = 19F58237B20CF3E62DE34F18 /* Pods-Project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Elad-Bar-Noa.Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Project/Project-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -653,6 +679,7 @@
 			baseConfigurationReference = E2A4BF9EC37223F198DBE5A2 /* Pods-Project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/GTMSessionFetcher\"",
@@ -671,6 +698,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Elad-Bar-Noa.Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Project/Project-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

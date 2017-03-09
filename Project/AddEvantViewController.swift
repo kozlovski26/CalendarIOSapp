@@ -7,78 +7,98 @@
 //
 
 import UIKit
+import Firebase
 
 class AddEvantViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-
     
+    var imageUrl: String?
+    @IBOutlet weak var userAvater: UIImageView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
-    @IBOutlet weak var MyImageView: UIImageView!
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var labelDate: UILabel!
     
     @IBOutlet weak var stTitle: UITextField!
 
-    @IBOutlet weak var stNoats: UITextField!
+    @IBOutlet weak var stNotes: UITextField!
+    @IBOutlet weak var stLocation: UITextField!
+    
+    var selectedImage:UIImage?
     
     //clear all the field
     @IBAction func clearBtn(_ sender: UIButton) {
-        stTitle.text = ""
-        stNoats.text = ""
-        labelDate.text = "DD/MM/Year"
-        MyImageView.image = #imageLiteral(resourceName: "Photo Libary")
+        self.navigationController!.popViewController(animated: true)
         
     }
     
     //image
     @IBAction func saveBtn(_ sender: UIButton) {
-        var title:String?
-        var noats:String?
-        var time:String?
-        var image:UIImage?
         
-        title = stTitle.text
-        noats = stNoats.text
-        time = labelDate.text
-        image = MyImageView.image
-        
-        //Image
-        let ev:MyEvents = MyEvents(title!, noats!, time!,image!)
-        Model.shareInstance.eventsArray.append(ev)
-        //Model.shareInstance.eventsArray.
+        self.spinner.isHidden = false
+        self.spinner.startAnimating()
+        if let image = self.selectedImage{
+            Model.instance.saveImage(image: image, name: self.stTitle!.text!){(url) in
+                self.imageUrl = url
+                let ev = MyEvents(self.stTitle!.text!, self.stNotes!.text!, self.stLocation!.text!, self.labelDate!.text!, self.imageUrl)
+                   Model.instance.addEvents(ev: ev)
+                print (self.stTitle)
+                self.spinner.stopAnimating()
+               // self.navigationController!.popViewController(animated: true)
+            }
+        }
+        else{
+            let ev = MyEvents(self.stTitle!.text!, self.stNotes!.text!, self.stLocation!.text!,self.labelDate!.text!)
+            Model.instance.addEvents(ev: ev)
+            self.spinner.stopAnimating()
+           // self.navigationController!.popViewController(animated: true)
+        }
     }
-    
-    
+
+   
+
     @IBAction func PhotoAction(_ sender: AnyObject) {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary){
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera){
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
             imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)
-            
-            
         }
-    
-    
-    
+        else{
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
+                imagePicker.allowsEditing = true
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+        }
     }
+    
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-           MyImageView.image = image
-            MyImageView.contentMode = .scaleAspectFit
-            self.dismiss(animated: true, completion: nil)
+        selectedImage = info["UIImagePickerControllerOriginalImage"] as? UIImage
+        self.userAvater.image = selectedImage
+        
+        self.dismiss(animated: true, completion: nil);
             
         }
-    }
     
- 
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.spinner.isHidden = true
         self.navigationItem.title = "Add Event"
-        
-        // Do any additional setup after loading the view.
+    }
+
+    @objc func MyEventsListDidUpdate(notification:NSNotification){
+        let events = notification.userInfo?["events"] as! [MyEvents]
+        for ev in events {
+            print("title: \(ev.title) \(ev.lastUpdate!)")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -100,17 +120,5 @@ class AddEvantViewController: UIViewController,UIImagePickerControllerDelegate,U
         self.labelDate.text = strDate
     }
     
-    
-
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

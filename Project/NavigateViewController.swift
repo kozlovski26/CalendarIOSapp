@@ -51,10 +51,34 @@ class NavigateViewController: UIViewController {
     }
     
     func getDirections(){
-        guard let selectedPin = selectedPin else { return }
-        let mapItem = MKMapItem(placemark: selectedPin)
-        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-        mapItem.openInMaps(launchOptions: launchOptions)
+        let geocoder = CLGeocoder()
+        let str = "1600 Pennsylvania Ave. 20500" // A string of the address info you already have
+        geocoder.geocodeAddressString(str) { (placemarksOptional, error) -> Void in
+            if let placemarks = placemarksOptional {
+                let mkPlacemark = MKPlacemark(coordinate: (placemarks[0].location?.coordinate)!, addressDictionary: placemarks[0].addressDictionary as! [String : Any]?)
+                let mapItem = MKMapItem(placemark: mkPlacemark)
+                let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                mapItem.openInMaps(launchOptions: launchOptions)
+//                print("placemark| \(placemarks.first)")
+//                if let location = placemarks.first?.location {
+//                    let query = "?ll=\(location.coordinate.latitude),\(location.coordinate.longitude)"
+//                    let path = "http://maps.apple.com/" + query
+//                    if let url = NSURL(string: path) {
+//                        UIApplication.sharedApplication().openURL(url)
+//                    } else {
+//                        // Could not construct url. Handle error.
+//                    }
+//                } else {
+//                    // Could not get a location from the geocode request. Handle error.
+//                }
+            } else {
+                // Didn't get any placemarks. Handle error.
+            }
+        }
+//        guard let selectedPin = selectedPin else { return }
+//        let mapItem = MKMapItem(placemark: selectedPin)
+//        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+//        mapItem.openInMaps(launchOptions: launchOptions)
     }
 }
 

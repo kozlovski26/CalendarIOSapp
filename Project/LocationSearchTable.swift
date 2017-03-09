@@ -13,6 +13,7 @@ import MapKit
 class LocationSearchTable: UITableViewController {
     
     
+    
     weak var handleMapSearchDelegate: HandleMapSearch?
     var matchingItems: [MKMapItem] = []
     var mapView: MKMapView?
@@ -31,6 +32,8 @@ class LocationSearchTable: UITableViewController {
         // put a space between "Washington" and "DC" for example
         let secondSpace = (selectedItem.subAdministrativeArea != nil &&
                             selectedItem.administrativeArea != nil) ? " " : ""
+        
+       
         
         let addressLine = String(
             format:"%@%@%@%@%@%@%@",
