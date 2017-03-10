@@ -40,8 +40,7 @@ class MyEventsTableViewController: UIViewController, UITableViewDelegate, UITabl
         self.myEventsList = notification.userInfo?["events"] as! [MyEvents]
         self.MyEventsTableView.reloadData()
         //self.myEventsList.sort (by: { $0.time < $1.time })
-        
-        //sort()
+       // sort()
         
     }
     
@@ -52,8 +51,8 @@ class MyEventsTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     
 //    func sort() {
-      //self.myEventsList.sort (by: { $0.time < $1.time })
-//        eventDic = [String:[MyEvents]]()
+//      self.myEventsList.sort (by: { $0.time < $1.time })
+//         var eventDic = [String:[MyEvents]]()
 //        var events = [(date: Date, event: MyEvents)]()
 //        for event in self.myEventsList {
 //            let dateFormatter = DateFormatter()
@@ -73,7 +72,8 @@ class MyEventsTableViewController: UIViewController, UITableViewDelegate, UITabl
 //            let d = "\(day!)/\(month!)/\(year!)"
 //            let dayInDic = eventDic[d]
 //            if dayInDic == nil {
-//                dates.append(d)
+//                
+//               // dates.append(d)
 //                eventDic[d] = [MyEvents]()
 //            }
 //            eventDic[d]?.append(event.event)

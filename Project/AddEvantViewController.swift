@@ -24,6 +24,7 @@ class AddEvantViewController: UIViewController,UIImagePickerControllerDelegate,U
     @IBOutlet weak var stNotes: UITextField!
     @IBOutlet weak var stLocation: UITextField!
     
+    @IBOutlet weak var SaveButton: UIButton!
     var selectedImage:UIImage?
     
     //clear all the field
@@ -31,15 +32,25 @@ class AddEvantViewController: UIViewController,UIImagePickerControllerDelegate,U
         self.navigationController!.popViewController(animated: true)
         
     }
-    
+
+   
     //image
+    
     @IBAction func saveBtn(_ sender: UIButton) {
+     
+        //empty event**need to finish
+        if self.stTitle!.text!.isEmpty
+        {
+           self.stTitle!.text! = "No Name Event!"
+        }
         
+       
         self.spinner.isHidden = false
         self.spinner.startAnimating()
         if let image = self.selectedImage{
             Model.instance.saveImage(image: image, name: self.stTitle!.text!){(url) in
                 self.imageUrl = url
+                
                 let ev = MyEvents(self.stTitle!.text!, self.stNotes!.text!, self.stLocation!.text!, self.labelDate!.text!, self.imageUrl)
                    Model.instance.addEvents(ev: ev)
                 print (self.stTitle)
@@ -49,6 +60,8 @@ class AddEvantViewController: UIViewController,UIImagePickerControllerDelegate,U
         }
         else{
             let ev = MyEvents(self.stTitle!.text!, self.stNotes!.text!, self.stLocation!.text!,self.labelDate!.text!)
+         
+         
             Model.instance.addEvents(ev: ev)
             self.spinner.stopAnimating()
            // self.navigationController!.popViewController(animated: true)
@@ -89,6 +102,7 @@ class AddEvantViewController: UIViewController,UIImagePickerControllerDelegate,U
     
 
     override func viewDidLoad() {
+     
         super.viewDidLoad()
         self.spinner.isHidden = true
         self.navigationItem.title = "Add Event"
